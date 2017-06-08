@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tickets.business.entities.User;
 import com.tickets.business.services.UserService;
+import com.tickets.business.entities.*;
+import com.tickets.business.services.*;
 
 
 @Controller
@@ -15,7 +17,8 @@ public class MainController {
 
     @Autowired
     private UserService userService;
-    
+    @Autowired
+    private MovieService movieService;
     
     public MainController() {
         super();
@@ -26,7 +29,17 @@ public class MainController {
     public String index() {
         return "index";
     }
-    
+    @RequestMapping(path = "/getter", method = RequestMethod.POST)
+    public String getter(final User user, final Model model) {
+    	
+            model.addAttribute("msg", "user number is "+userService.UserCount()+"names are"
+            		+ userService.viewusername()
+         );
+    	
+       
+        return "response";
+    }
+
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public String register(final User user, final Model model) {
     	if (userService.hasUsername(user.getUsername())) {
@@ -47,6 +60,28 @@ public class MainController {
     	} else {
     		model.addAttribute("msg", "Login failed. Incorrect password.");
     	}
+        return "response";
+    }
+    
+    
+    @RequestMapping(path = "/getmovie", method = RequestMethod.POST)
+    public String getmovie(final Movie movie, final Model model) {
+
+    	if(movieService.getMovie(movie.getMovieId()) != null) {
+			model.addAttribute("msg", movieService.getMovie(movie.getMovieId()).toString()+
+					"\n type2:"+
+					movie.toString());
+		}  
+        return "response";
+    }
+    @RequestMapping(path = "/addmovie", method = RequestMethod.POST)
+    public String addMovie(final Movie movie, final Model model) {
+
+    	movieService.create(movie);
+    	model.addAttribute("msg", "Movie id:"+movie.getMovieId().toString()+
+    			"movie title"+movie.getMovieTitle().toString()+
+    			"movie brief"+movie.getMovieBrief().toString()
+    			);
         return "response";
     }
 }
