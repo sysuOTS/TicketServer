@@ -62,4 +62,26 @@ public class MainController {
     	}
         return "response";
     }
+    
+    
+    @RequestMapping(path = "/getmovie", method = RequestMethod.POST)
+    public String getmovie(final Movie movie, final Model model) {
+
+    	if(movieService.getMovie(movie.getMovieId()) != null) {
+			model.addAttribute("msg", movieService.getMovie(movie.getMovieId()).toString()+
+					"\n type2:"+
+					movie.toString());
+		}  
+        return "response";
+    }
+    @RequestMapping(path = "/addmovie", method = RequestMethod.POST)
+    public String addMovie(final Movie movie, final Model model) {
+
+    	movieService.create(movie);
+    	model.addAttribute("msg", "Movie id:"+movie.getMovieId().toString()+
+    			"movie title"+movie.getMovieTitle().toString()+
+    			"movie brief"+movie.getMovieBrief().toString()
+    			);
+        return "response";
+    }
 }

@@ -23,6 +23,19 @@
 		</div>
 	</form>
 
+	<form action="/tickets/addmovie" method="post">
+		<div>
+		  <label for="movieTitle">moviename</label>
+		  <input type="text" name="movieTitle"/>
+		</div>
+		<div>
+          <label for="movieBrief">brief</label>
+          <input type="text" name="movieBrief"/>
+        </div>
+		<div class="submit">
+		  <button type="submit">AddMovie</button>    
+		</div>
+	</form>
     <form action="/tickets/login" method="post">
         <div>
           <label for="username">username</label>
@@ -34,6 +47,15 @@
         </div>
         <div class="submit">
           <button type="submit">Login</button>    
+        </div>
+    </form>
+        <form action="/tickets/getmovie" method="post">
+        <div>
+          <label for="movieId">movieId</label>
+          <input type="text" name="movieId"/>
+        </div>
+        <div class="submit">
+          <button type="submit">SendmovieId</button>    
         </div>
     </form>
 	<form action="/tickets/getter" method="post">

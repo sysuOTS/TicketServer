@@ -1,35 +1,54 @@
 package com.tickets.business.entities;
-import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
-@Table(name = "Movie")
+@Table(name = "movie")
 public class Movie {
-	private Integer movieId;
-	private String movieTitle;
-	private String movieBrief;
-	public Movie(){
-		super();
-	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "movie_id")
+	private Integer movieId;
+	
+	@Column(name = "movie_title")
+	private String movieTitle;
+	
+	@Column(name = "movie_brief")
+	private String movieBrief;
+    
+	@Override
+    public String toString() {
+        return "Movie [id=" + movieId + ", title=" + movieTitle + ", brief=" + movieBrief + "]";
+    }
+	
+	public Movie(){
+		super();
+	}
+
     public Integer getMovieId() {
-		return movieId;
+		return this.movieId;
 	}
 	public void setMovieId(Integer id){
-		movieId = id;
+		this.movieId = id;
 	}
+	
 	public String getMovieTitle() {
-		return movieTitle;
+		return this.movieTitle;
 	}
 	public void setMovieTitle(String title){
-		movieTitle = title;
+		this.movieTitle = title;
 	}
+
 	public String getMovieBrief() {
-		return movieBrief;
+		return this.movieBrief;
 	}
 	public void setMovieBrief(String brief){
-		movieBrief = brief;
+		this.movieBrief = brief;
 	}
 }
