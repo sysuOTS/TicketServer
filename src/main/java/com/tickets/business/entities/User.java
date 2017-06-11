@@ -17,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     
     @Column(name = "username")
     private String username;
@@ -33,10 +33,10 @@ public class User {
     
 	@Override
     public String toString() {
-        return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+        return "User [id= XXX"  + ", username=" + username + ", password=" + password + "]";
     }
-	public String getId(){
-		return id.toString();
+	public Integer getId(){
+		return id;
 	}
 	
     public String getUsername() {

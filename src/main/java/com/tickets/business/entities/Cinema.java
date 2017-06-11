@@ -1,32 +1,45 @@
 package com.tickets.business.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Set;
+import com.tickets.business.services.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 
+
+import com.tickets.business.entities.*;
+import com.tickets.business.entities.repositories.CinemaRepository;
+import com.tickets.business.entities.repositories.MovieRepository;
 @Entity
 @Table(name = "Cinema")
-public class Cinema {
-	  	@Id
-	    @GeneratedValue(strategy = GenerationType.AUTO)
-	    @Column(name = "cinema_id")
+public class Cinema implements Serializable {
+
 	    private Integer cinemaId;
 	    
-	    @Column(name = "cinema_name",nullable = false,length = 30)
+	   
 	    private String cinemaName;
 	    
-	    @Column(name = "cinema_addr",nullable = false,length = 50)
+	
 	    private String cinemaAddr;
 	    
+
+	    private Set<Movie> cinemaMovies = new HashSet<Movie>();
 	    
+	   
 	    public Cinema() {
 	        super();
 	    }
+	    
+	    public Cinema(String name,String addr,String movies) {
+	    	setCinemaName(name);
+	    	setCinemaAddr(addr);
+	    	
+	    }
+	   
 	    public void setCinemaId(Integer id){
 	    	this.cinemaId = id;
 	    }
@@ -36,14 +49,32 @@ public class Cinema {
 	    public void setCinemaAddr(String addr){
 	    	this.cinemaAddr = addr;
 	    }
+	
+	    public void setCinemaMovies(Set<Movie> movies) {
+	    	this.cinemaMovies = movies;
+	    }
+	  
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    @Column(name = "cinema_id")
 	    public Integer getCinemaId(){
 	    	return this.cinemaId;
 	    }
+	    @Column(name = "cinema_name",nullable = false,length = 30)
 	    public String getCinemaName(){
 	    	return this.cinemaName;
 	    }
+	    @Column(name = "cinema_addr",nullable = false,length = 50)
 	    public String getCinemaAddr(){
 	    	return this.cinemaAddr;
+	    }
+	    
+	    @ManyToMany(targetEntity = Movie.class, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	    @JoinTable(name = "R_Cinema_CinemaMovies",
+	            joinColumns = {@JoinColumn(name = "cinema_id", referencedColumnName = "cinema_id", foreignKey=@ForeignKey(name="FK_R_cinema_movie"))},
+	            inverseJoinColumns = {@JoinColumn(name = "movie_id", referencedColumnName ="movie_id", foreignKey=@ForeignKey(name="FK_R_movie_cinema"))})
+	    public Set<Movie> getCinemaMovies(){
+	    	return this.cinemaMovies;
 	    }
 	    
 		

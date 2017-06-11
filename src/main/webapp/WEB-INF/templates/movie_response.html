@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Response</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <p th:text="${msg}" />
+	<img th:src="@{'/images/'+${moviepostpath}}" height="200px" width="200px"/>
+	
+    <h1>OnShow Cinemas</h1>
+  
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+      </tr>
+      <tr th:each="cinema : ${onCinemas}">
+        <td th:text="${cinema.cinemaName}">grand cinema</td>
+        <td th:text="${cinema.cinemaAddr}">guang zhou</td>
+      </tr>
+    </table>
+    
+    <form action="/tickets/searchMovie" method="get">
+		<div class="submit">
+		  <button type="submit">backSearch</button>    
+		</div>
+	</form>
+</body>
+
+</html>

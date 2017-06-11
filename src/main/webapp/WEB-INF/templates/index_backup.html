@@ -38,11 +38,25 @@
           <button type="submit">Login</button>    
         </div>
     </form>
+    
+        <form action="/tickets/getmovie" method="post">
+        <div>
+          <label for="movieId">movieId</label>
+          <input type="text" name="movieId"/>
+        </div>
+        <div class="submit">
+          <button type="submit">SendmovieId</button>    
+        </div>
+    </form>
+	<form action="/tickets/getter" method="post">
+        <div class="submit">
+          <button type="submit">Getter</button>    
+        </div>
+    </form>
     <form action="/tickets/adddata" method="get">
 		<div class="submit">
 		  <button type="submit">addData</button>    
 		</div>
-
 </body>
 
 </html>

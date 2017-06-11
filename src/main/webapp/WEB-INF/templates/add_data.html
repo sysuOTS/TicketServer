@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Response</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+		<form action="/tickets/DateTest" method="post">
+		    <div>
+			   <label for="date">A Date</label>
+			   <input type="date" name="date"/>
+			</div>
+			<div class="submit">
+			  <button type="submit">submit date</button>    
+			</div>
+		</form>
+			
+		<form action="/tickets/addmovie" method="post">
+			<div>
+			  <label for="movieTitle">movieTitle</label>
+			  <input type="text" name="movieTitle"/>
+			</div>
+			<div>
+	          <label for="movieBrief">movieBrief</label>
+	          <input type="text" name="movieBrief"/>
+	        </div>
+	        <div>
+	          <label for="moviePostpath">Postpath</label>
+	          <input type="text" name="moviePostpath"/>
+	        </div>
+		    <div>
+			   <label for="movieOnshowdate">movieOnshowdate</label>
+			   <input type="date" name="movieOnshowdate"/>
+			</div>
+			<div>
+		          <label for="movieOnshowCinemas">onshowCinemas</label>
+		          <input type="text" name="movieOnshowCinemas"/>
+		     </div>
+			<div class="submit">
+			  <button type="submit">AddMovie</button>    
+			</div>
+		</form>	
+			
+			<form action="/tickets/addcinema" method="post">
+				<div>
+				  <label for="cinemaName">cinemaname</label>
+				  <input type="text" name="cinemaName"/>
+				</div>
+				<div>
+		          <label for="cinemaAddr">cinemaAddress</label>
+		          <input type="text" name="cinemaAddr"/>
+		        </div>
+		      	<div>
+		          <label for="cinemaMovies">Moviestitle</label>
+		          <input type="text" name="cinemaMovies"/>
+		        </div>
+				<div class="submit">
+				  <button type="submit">AddCinema</button>    
+				</div>
+			</form>	
+			<form action="/tickets/" method="get">
+				<div class="submit">
+				  <button type="submit">backIndex</button>    
+				</div>
+			</form>
+</body>
+
+</html>

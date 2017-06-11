@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Response</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <p th:text="${msg}" />
+    <h1>OnShow Movies</h1>
+    <table>
+      <tr>
+        <th>title</th>
+        <th>brief</th>
+      </tr>
+      <tr th:each="movie : ${onMovies}">
+        <td th:text="${movie.movieTitle}">Title</td>
+        <td th:text="${movie.movieBrief}">Brief</td>
+      </tr>
+    </table>
+   <form action="/tickets/searchMovie" method="get">
+		<div class="submit">
+		  <button type="submit">backSearch</button>    
+		</div>
+	</form>
+</body>
