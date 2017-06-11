@@ -20,4 +20,7 @@ Server of a movie tickets system powered by Spring & Thymeleaf.
     $ python server.py
     ```
 
-3. The application should be available at `http://localhost:8080/tickets`.
+3. The application should be available at `http://localhost:8082/tickets`.
+
+## the application contains basic functions of register and login user, add cinema or movie and search them by name
+## remember to change the MySQL database user and password in SpringBusinessConfig
